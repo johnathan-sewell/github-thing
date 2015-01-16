@@ -1,3 +1,4 @@
+var config = require('./config');
 var http = require('http');
 
 http.createServer(function(req, res) {
@@ -5,6 +6,6 @@ http.createServer(function(req, res) {
 		'Content-Type': 'text/plain'
 	});
 	res.end('Hello, I\'m a tiny little HTTP thing.\n');
-}).listen(1337, '127.0.0.1');
+}).listen(1337, config.listenIP);
 
-console.log('Server running at http://127.0.0.1:1337/');
+console.log('Server running at http://' + config.listenIP + ':1337/');
