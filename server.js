@@ -1,11 +1,24 @@
 var config = require('./config');
-var http = require('http');
+var express = require('express');
 
-http.createServer(function(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'text/plain'
-	});
-	res.end('Hello, I\'m a tiny little HTTP thing.\n');
-}).listen(1337, config.listenIP);
+var express = require('express')
+var app = express()
 
-console.log('Server running at http://' + config.listenIP + ':1337/');
+function log(req){
+  console.log('%s request handeled for %s', req.method, req.url);
+}
+app.get('/', function(req, res) {
+	log(req);
+	res.send('Hello, please POST to /comment.\n');
+})
+
+app.post('/comment', function(req, res) {
+	console.dir(req.body);	
+	res.send('Recieved your comment.\n');
+})
+
+var server = app.listen(config.listenPort, config.listenIP, function() {
+	var host = server.address().address
+	var port = server.address().port
+	console.log('listening at http://%s:%s', host, port)
+})
