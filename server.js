@@ -19,24 +19,19 @@ app.get('/', function(req, res) {
 })
 
 app.post('/comment', function(req, res) {
-	console.dir(req.body);
-
-
 	keen.addEvent('PullRequest', {
-		'type': 'pull_request_review_comment'
+		'type': 'review_comment'
 	}, function(err) {
 		if (err) {
-			console.dir('Oh no, an error!', err);
-			res.send('Oh no, an error!\n');
+			res.send('Oh no, an error occured!\n');
 		} else {
-			console.log('Hooray, it worked!');
-			res.send('Hooray, it worked!\n');
+			res.send('OK!\n');
 		}
 	});
 })
 
 var server = app.listen(config.listenPort, config.listenIP, function() {
-	var host = server.address().address
-	var port = server.address().port
-	console.log('listening at http://%s:%s', host, port)
+	var host = server.address().address,
+		port = server.address().port;
+	console.log('listening at http://%s:%s', host, port);
 })
