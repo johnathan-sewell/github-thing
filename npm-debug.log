@@ -5,19 +5,19 @@
 2 info using npm@1.4.28
 3 info using node@v0.10.33
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart ffpulls@1.0.0
-6 info start ffpulls@1.0.0
+5 info prestart github-thing@1.0.0
+6 info start github-thing@1.0.0
 7 verbose unsafe-perm in lifecycle true
-8 info ffpulls@1.0.0 Failed to exec start script
-9 error ffpulls@1.0.0 start: `node server.js`
+8 info github-thing@1.0.0 Failed to exec start script
+9 error github-thing@1.0.0 start: `node server.js`
 9 error Exit status 8
-10 error Failed at the ffpulls@1.0.0 start script.
-10 error This is most likely a problem with the ffpulls package,
+10 error Failed at the github-thing@1.0.0 start script.
+10 error This is most likely a problem with the github-thing package,
 10 error not with npm itself.
 10 error Tell the author that this fails on your system:
 10 error     node server.js
 10 error You can get their info via:
-10 error     npm owner ls ffpulls
+10 error     npm owner ls github-thing
 10 error There is likely additional logging output above.
 11 error System Darwin 13.4.0
 12 error command "/Users/jonathans/.nvm/v0.10.33/bin/node" "/Users/jonathans/.nvm/v0.10.33/bin/npm" "start"
