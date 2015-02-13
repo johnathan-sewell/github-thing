@@ -1,15 +1,13 @@
-var config = require('./config');
-var express = require('express');
-var bodyParser = require('body-parser');
-var Keen = require('keen.io');
+var config = require('./config'),
+	express = require('express'),
+	bodyParser = require('body-parser'),
+	Keen = require('keen.io'),
+	morgan = require('morgan'),
+	app = express();
 
-var express = require('express')
-var app = express()
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(morgan('combined'));
 
-function log(req) {
-	console.log('%s request handled for %s', req.method, req.url);
-}
 
 var keen = Keen.configure({
 	projectId: config.keen.projectId,
@@ -17,14 +15,12 @@ var keen = Keen.configure({
 });
 
 app.get('/', function(req, res) {
-	log(req);
 	res.send('Hello, please POST to /comment.\n');
 })
 
 app.post('/comment', function(req, res) {
-	log(req);
 	console.dir(req.body);
-	
+
 
 	keen.addEvent('PullRequest', {
 		'type': 'pull_request_review_comment'
